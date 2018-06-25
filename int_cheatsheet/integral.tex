@@ -1,0 +1,72 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, tabularx}
+\usepackage{graphicx}
+\usepackage{listings}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+ 
+% \newcommand{\N}{\mathbb{N}}
+% \newcommand{\Z}{\mathbb{Z}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\title{Integral Function Analysis}
+\author{Jun Gao - 1400012877}
+\date{June 25, 2018}
+
+\maketitle
+\section{Gaussian Integral}
+\begin{theorem}
+	\begin{eqnarray}
+	\int_{-\infty}^{+\infty} e^{-x^2} dx = \sqrt{\pi}
+	\end{eqnarray}
+\end{theorem}
+\begin{proof}
+\begin{eqnarray*}
+	&&\left(\int_{-\infty}^{+\infty} e^{-x^2} dx\right)^2\\
+	&=&\int_{-\infty}^{+\infty} e^{-x^2} dx \int_{-\infty}^{+\infty} e^{-y^2} dy\\
+	&=& \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} e^{-x^2} e^{-y^2} dxdy\\
+	&=&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} e^{-(x^2+y^2)}dxdy\\
+	&=&\int_{0}^{+\infty}\int_{0}^{2\pi} re^{-(r^2)}d\theta dr\\
+	&=&2\pi \int_{0}^{+\infty}re^{-(r^2)} dr\\
+	&=&2\pi \int_{0}^{+\infty}\frac{1}{2}e^{-(r^2)} dr^2\\
+	&=&\pi
+\end{eqnarray*}
+\end{proof}
+
+
+
+\section{Probability Integral}
+\begin{theorem}
+	If $f(x)$ is the density function of a random Variable $X$, then 
+	\begin{eqnarray}
+		E(g(x)) = \int_{-\infty}^{+\infty}g(x)f(x) dx
+	\end{eqnarray}
+\end{theorem}
+\begin{proof}
+	Just the definition of expectation. 
+\end{proof}
+\begin{corollary}
+	If random variable $X$ satisfies the Normal Distribution, $f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(x-\mu)^2}{2\sigma^2}}$, then $E(e^x)=e^{\mu+\sigma^2/2}$.
+\end{corollary}
+\begin{proof}
+\begin{eqnarray*}
+	E(e^x)&=&\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^xe^{\frac{-(x-\mu)^2}{2\sigma^2}}dx\\
+	&=&\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^{x+\frac{-(x-\mu)^2}{2\sigma^2}}dx\\
+	&=&\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^{\frac{-\left(x-(\mu+\sigma^2)\right)^2}{2\sigma^2}}e^{\mu+\sigma^2/2}dx\\
+	&=&e^{\mu+\sigma^2/2}\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^{\frac{-\left(x-(\mu+\sigma^2)\right)^2}{2\sigma^2}}dx\\
+	&=&e^{\mu+\sigma^2/2}
+\end{eqnarray*}
+\end{proof}
+\end{document}
