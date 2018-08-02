@@ -9,6 +9,10 @@
 \usepackage{amsmath,amsthm,amssymb, tabularx}
 \usepackage{graphicx}
 \usepackage{listings}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
  
 % \newcommand{\N}{\mathbb{N}}
 % \newcommand{\Z}{\mathbb{Z}}
@@ -29,4 +33,38 @@
 \item det(I + A) = det(I + PVP) = det (I + V) = $\prod_i (1 + \lambda_i)$
 \end{itemize}
  
+
+\section{Rank}
+\begin{theorem}
+	Rank($AA^T$) = Rank(A)
+\end{theorem}
+\begin{proof}
+	For any $x$ that makes $Ax=0$, we have $AA^Tx=0$. For any $x$ that makes $AA^Tx=0$, we have $x^TAA^Tx=0,$ so $Ax=0$
+\end{proof}
+\begin{theorem}
+	Rank(AB) $\ge$ Rank(A) + Rank(B) - n.
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
+\section{SVD}
+\subsection{EVD}
+\begin{theorem}
+	For any symmetric matrix M, there always exist eigenvalue value decomposition, such that $M=X\Gamma X^T$, and $XX^T=I_n$, $\Gamma=\text{diag}\{\gamma_1, \gamma_2,\cdots,\gamma_n\}$.
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
+\begin{theorem}
+	For similar matrix ($A=P^{-1}BP$), they have same eigenvalues and eigenvectors
+\end{theorem}
+\begin{proof}
+	from the deterimant analysis, the eigenvalue is determined by the detrimant poly-equation. then we have $|\lambda I - P^{-1}BP|=|P^{-1}(\lambda I-B)P|=|P^{-1}||\lambda I - B||P|=|\lambda I - B|.$
+\end{proof}
+\begin{theorem}
+	$AA^T$ is symmetric semi positive definite.
+\end{theorem}
+\begin{proof}
+	Consider $x^TAA^Tx=x^TA(x^TA)^T=||x^TA||^2=\lambda||x||^2.$ Therefore, $\lambda$ should be non-negative.
+\end{proof}
 \end{document}
