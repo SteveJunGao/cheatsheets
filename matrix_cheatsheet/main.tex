@@ -67,4 +67,10 @@
 \begin{proof}
 	Consider $x^TAA^Tx=x^TA(x^TA)^T=||x^TA||^2=\lambda||x||^2.$ Therefore, $\lambda$ should be non-negative.
 \end{proof}
+\begin{theorem}
+	For the solution in the least square approximation problem $\text{min}_x||Ax-B||^2$, where x is a vector. We have the closed form solution that: $x={(A^TA)}^{-1}A^TB$
+\end{theorem}
+\begin{proof}
+	Calculate the first order derivative, we have $A^T(Ax-B)=0$, then $x={(A^TA)}^{-1}A^TB$. (We suppose A is column full rank here)
+\end{proof}
 \end{document}

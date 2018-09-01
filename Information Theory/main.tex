@@ -1,0 +1,40 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=0.6in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, tabularx}
+\usepackage{graphicx}
+\usepackage{listings}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+ 
+% \newcommand{\N}{\mathbb{N}}
+% \newcommand{\Z}{\mathbb{Z}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\title{Information Theory}
+\author{Jun Gao}
+\date{August 31, 2018}
+
+\maketitle
+\section{Entropy}
+\begin{definition}
+	Entropy $H(X)$, which measures the uncertainty of a discrete random variable X, is defined as the $H(X)=\sum_i - p_i \log(p_i)$
+\end{definition}
+\textbf{Discussion: } Entropy is an effective measurement of uncertainty according to the Shanon's minimum description code theory. Suppose we want use a code to compress/encode the discrete random variable $X$ (each possible value $X_i$ should have a unique code) and the resulting code sequence is \textit{uniquely decodable} without referencing the whole sequence (\textit{prefix code, any code is not the prefix of other codes}), then the minimum code length is the entropy using Karft Inequality. 
+\begin{theorem}
+	Karft Inequality: 
+\end{theorem}
+
+\section{Mutual Information}
+\end{document}
