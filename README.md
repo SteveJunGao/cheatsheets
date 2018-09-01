@@ -1,4 +1,4 @@
-This repo will record some theories, equalities, inequalities that I find important in machine learning. I will also add my notes on these stuff.
+This repo will record some theories, equalities, inequalities that I find important in machine learning. All the proofs will be recored and I will also add my notes on these stuff.
 
 ## Matrix Theory
 - Determinant
