@@ -52,7 +52,30 @@ To get such code, we first treat $l_i$ as continuous variable, using the Lagrang
 \end{eqnarray}
 The derivative w.r.t. $l_i$ should satisfy $p_i-\lambda D^{-l_i}\ln D=0$, therefore $l_i=-\log_D p_i + \log_D (\lambda\ln D)$, we could also get the optimal $\lambda$ is $1/\ln D$, so the optimal $l_i$ is $-log_D p_i$. Extending to integer code length, we could proof $H(X) \le \mathbb{L}^* < H(X) + 1$, it's easy to proof this by just rounding to the $\lceil \rceil$ and do the summation.
 
-\section{Relative Entropy}
+\begin{definition}
+	\textbf{Joint Entropy:} $H(X,Y)=-\sum_X\sum_Y p(x,y) \log p(x,y)$
+\end{definition}
+\begin{definition}
+	\textbf{Conditional Entropy: $H(X|Y) = \sum_Y p(y) H(X|Y=y)=-\sum_Y\sum_X p(x,y)\log p(x|y)$}
+\end{definition}
 
+\begin{proposition}
+	$H(X,Y)=H(Y) + H(X|Y)$, Prove this by just simple equation expansion.
+\end{proposition}
+
+\section{Relative Entropy}
+\begin{definition}
+	$D(p||q)=\sum_i p_i\log \frac{p_i}{q_i}$
+\end{definition}
+\textbf{Discussion:} Suppose the true distribution of a random variable is $p$, the minimum description length should be $H(p)$, but if we misuse another distribution $q$, the relative entropy measures how much extra bits we need to encode the random variable, which is $-\sum_i p_i\log q_i + \sum_i p_i \log p_i = \sum_i p_i\log \frac{p_i}{q_i} = D(p||q)$
+\begin{proposition}
+	$D(p||q)\ge 0s$
+\end{proposition}
+\begin{proof}
+	Using Jenson Inequality, we have $\sum_i -p_i\log \frac{q_i}{p_i}\le\log\sum_i p_i\frac{q_i}{p_i}=0$
+\end{proof}
 \section{Mutual Information}
+\begin{definition}
+	$I(X;Y)=H(X)-H(X|Y)=H(Y)-H(Y|X)=\sum_X\sum_Yp(x,y)\log\frac{p(x,y)}{p(x)p(y)}=D(p(x,y)||p(x)p(y)$
+\end{definition}
 \end{document}
