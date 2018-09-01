@@ -33,8 +33,26 @@
 \end{definition}
 \textbf{Discussion: } Entropy is an effective measurement of uncertainty according to the Shanon's minimum description code theory. Suppose we want use a code to compress/encode the discrete random variable $X$ (each possible value $X_i$ should have a unique code) and the resulting code sequence is \textit{uniquely decodable} without referencing the whole sequence (\textit{prefix code, any code is not the prefix of other codes}), then the minimum code length is the entropy using Karft Inequality. 
 \begin{theorem}
-	Karft Inequality: 
+	\textbf{Karft Inequality:} For any prefix code, the codeword length $l_1,l_2,\cdots,l_m$ should satisfy the following inequality:
+	\begin{eqnarray}
+		\sum_i^m D^{-l_i} \le 1,
+	\end{eqnarray} 
+	and for any code length that satisfy such inequality, we could construct prefix code for this random variable with these code length.
 \end{theorem}
+\begin{proof}
+	For prefix code, it equals to construct a tree with all the codeword being the leaves, without any codeword being the inner nodes. Then for a complete D-branch tree, each node $l_i$ should have $D^{l_{max}-l_i}$ descends, therefore $\sum_i D^{l_{max}-l_i} \le D^{l_{max}}$, thus $\sum_i^m D^{-l_i} \le 1$. Also given the code length, we could always construct this D-branch tree.
+\end{proof}
+Therefore, the minimum code length of a discrete random variable should satisfy Karft's inequality. Then we have the following optimization problem.
+\begin{eqnarray}
+	\min_{l_i} \sum_i p_il_i, s.t. \sum_i D^{-l_i}<1
+\end{eqnarray}
+To get such code, we first treat $l_i$ as continuous variable, using the Lagrange multiplier, it equals to the minimize of 
+\begin{eqnarray}
+	\min_{l_i,\lambda} \sum_i p_il_i + \lambda \sum_i D^{-l_i}
+\end{eqnarray}
+The derivative w.r.t. $l_i$ should satisfy $p_i-\lambda D^{-l_i}\ln D=0$, therefore $l_i=-\log_D p_i + \log_D (\lambda\ln D)$, we could also get the optimal $\lambda$ is $1/\ln D$, so the optimal $l_i$ is $-log_D p_i$. Extending to integer code length, we could proof $H(X) \le \mathbb{L}^* < H(X) + 1$, it's easy to proof this by just rounding to the $\lceil \rceil$ and do the summation.
+
+\section{Relative Entropy}
 
 \section{Mutual Information}
 \end{document}
