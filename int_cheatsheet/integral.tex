@@ -33,7 +33,7 @@
 	\end{eqnarray}
 \end{theorem}
 \begin{proof}
-\begin{eqnarray*}
+\begin{eqnarray}
 	&&\left(\int_{-\infty}^{+\infty} e^{-x^2} dx\right)^2\\
 	&=&\int_{-\infty}^{+\infty} e^{-x^2} dx \int_{-\infty}^{+\infty} e^{-y^2} dy\\
 	&=& \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} e^{-x^2} e^{-y^2} dxdy\\
@@ -42,7 +42,7 @@
 	&=&2\pi \int_{0}^{+\infty}re^{-(r^2)} dr\\
 	&=&2\pi \int_{0}^{+\infty}\frac{1}{2}e^{-(r^2)} dr^2\\
 	&=&\pi
-\end{eqnarray*}
+\end{eqnarray}
 \end{proof}
 
 
@@ -61,12 +61,35 @@
 	If random variable $X$ satisfies the Normal Distribution, $f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(x-\mu)^2}{2\sigma^2}}$, then $E(e^x)=e^{\mu+\sigma^2/2}$.
 \end{corollary}
 \begin{proof}
-\begin{eqnarray*}
+\begin{eqnarray}
 	E(e^x)&=&\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^xe^{\frac{-(x-\mu)^2}{2\sigma^2}}dx\\
 	&=&\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^{x+\frac{-(x-\mu)^2}{2\sigma^2}}dx\\
 	&=&\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^{\frac{-\left(x-(\mu+\sigma^2)\right)^2}{2\sigma^2}}e^{\mu+\sigma^2/2}dx\\
 	&=&e^{\mu+\sigma^2/2}\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{+\infty}e^{\frac{-\left(x-(\mu+\sigma^2)\right)^2}{2\sigma^2}}dx\\
 	&=&e^{\mu+\sigma^2/2}
-\end{eqnarray*}
+\end{eqnarray}
+\end{proof}
+\begin{theorem}
+	Reasonable lease square loss.  $y = a^Tx + \epsilon$, where $\epsilon$ is the error.
+\end{theorem}
+
+\begin{proof}
+	Suppose we would like to maximize the likelihood of $P(y|x)$ and the error is Gaussian Noise.
+	\begin{eqnarray}
+		\epsilon \sim \mathcal{N}(0, \sigma^2); p(e) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-\epsilon^2}{2\sigma^2}}
+	\end{eqnarray}
+	\begin{eqnarray}
+		\max_{a} P(y|x)&=& \max_{a} \Pi_i^n (p(y_i|x_i)) = \max_a \Pi_i^n\frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(y_i - a^T x_i)^2}{2\sigma^2}}\\
+		&=& \max_a \frac{1}{\sqrt{2\pi}\sigma}e^{\sum_i^n \frac{-(y_i - a^Tx_i)^2}{2\sigma^2}},
+	\end{eqnarray}
+	which is equivalent to minimize:
+	\begin{eqnarray}
+		\min_a \sum_i^N (y_i - a^Tx_i)^2.
+	\end{eqnarray}
+{\bf Extension: } If the error is Laplac distribution. The L2 loss function become the L1 loss.
+\begin{eqnarray}
+	\epsilon \sim P(\epsilon) = \frac{1}{2c} e^{-\frac{|\epsilon|}{c}}
+\end{eqnarray}
+And this will become a linear programming problem.
 \end{proof}
 \end{document}
