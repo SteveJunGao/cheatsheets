@@ -21,8 +21,8 @@
 % --------------------------------------------------------------
 %                         Start here
 % --------------------------------------------------------------
-\title{Integral Function Analysis}
-\author{Jun Gao - 1400012877}
+\title{Calculus}
+\author{Jun Gao}
 \date{June 25, 2018}
 
 \maketitle
@@ -92,4 +92,17 @@
 \end{eqnarray}
 And this will become a linear programming problem.
 \end{proof}
+
+\section{Inequality}
+\begin{theorem}
+	For a series of vectors $v_1, \cdots v_n$, the norm of the new vector $\sum_i^n \theta_i v_i$ satisfies:
+	\begin{eqnarray}
+		||\sum_i^n \theta_i v_i||_2 \le \sum_i^n \theta_i||v_i||_2
+	\end{eqnarray}
+\end{theorem}
+The proof can be done by simply using the convex function properties.
+
+\section{Lecture notes for Convex Optimization}
+\subsection{Gradient}
+For $f(x) = x^TPx$, the gradient is $f'(x) = 2Px$
 \end{document}

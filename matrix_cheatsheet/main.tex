@@ -73,4 +73,46 @@
 \begin{proof}
 	Calculate the first order derivative, we have $A^T(Ax-B)=0$, then $x={(A^TA)}^{-1}A^TB$. (We suppose A is column full rank here)
 \end{proof}
+
+
+\section{Lecture notes for Convex Optimization}
+\begin{definition}
+	Vector Space: the space is closed under addition and scale multiplication.
+\end{definition}
+\begin{definition}
+	Norm: $||\cdot||$ denotes a mapping from $\mathbb{R}^n\to \mathbb{R}$ and should satisfy the following conditions:
+	\begin{eqnarray}
+		||a||&\ge& 0; \& ||x||=0 iff x=0 \\
+		||ta|| &=& t||a||\\
+		||\sum_i a_i|| &\le& \sum_i ||a_i||
+	\end{eqnarray}
+\end{definition}
+{\bf Examples:} Euclidean Norm: $||x||_2 = (\sum_i(x_i^2))^{1/2}$; L-p norm $||x||_p=(\sum_i(x_i^p)^{1/p})$; L-infinite norm means the maximum value and L-0 norm means the number of non-zero values.
+
+\begin{definition}
+	$||\cdot||_2$ is special, as it's induced by an inner product. (inner product space)
+\end{definition}
+\begin{theorem}
+	Cauchy-Schwatz inequality: 
+	\begin{eqnarray}
+		\langle x,y\rangle \le ||x||\cdot ||y||
+	\end{eqnarray}
+\end{theorem}
+\begin{definition}
+	Dual Norm $||\cdot||_*$: let $||\cdot||$ be a norm in $R^n$, the dual norm is defined as $||Z||_*=\sup_x\{Z^Tx| ||x||\le 1\}$
+\end{definition}
+{\bf Discussion:} 
+\begin{itemize}
+	\item The dual norm of L-2 norm $||\cdot||_2$ is also $||\cdot||_2$. 
+	\item The dual norm of L-1 norm is L-$\infty$ norm. (Consider it as an expectation over $z_i$ and $x_i$ is the probability of $z_i$, so the maximum reached when we assign all the probability to $z_{max}$.)
+	\item the dual norm of L-$\infty$ norm is L-1 norm.
+	\item In general, the $||\cdot||_p$ norm, its dual norm is q-norm, where $1/p + 1/q = 1$
+\end{itemize}
+
+\begin{definition}
+	Matrix Inner Product: $\langle X,Y\rangle = \sum\sum x_{ij}y_{ij}=tr(XY^T)$
+\end{definition}
+\begin{definition}
+	Forbenius Norm $||X||_F = (\sum_i\sum_i x_{ij}^2)^{1/2}$
+\end{definition}
 \end{document}
