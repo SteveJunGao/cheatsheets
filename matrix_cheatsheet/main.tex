@@ -9,9 +9,9 @@
 \usepackage{amsmath,amsthm,amssymb, tabularx}
 \usepackage{graphicx}
 \usepackage{listings}
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
 
  
 % \newcommand{\N}{\mathbb{N}}
@@ -50,6 +50,22 @@
 \section{SVD}
 \subsection{EVD}
 \begin{theorem}
+	Jordan Theorem, for any square matrix $A$, there exists nonsingular matrix $T$, such that
+	\begin{eqnarray}
+		TAT^{-1} = diag\left[J_{m1}(\lambda_1),J_{m2}(\lambda_2),\cdots,J_{mk}(\lambda_k)\right],
+	\end{eqnarray}
+	where $J_{mi}(\lambda_i)$ is $mi\times mi$ matrix and equals:
+	\[
+	\begin{bmatrix}
+		\lambda_i & 1 & 0 & \dots & 0\\
+		0 & \lambda_i & 1& \\
+		0 & \vdots & \vdots& \ddots&\vdots\\
+			0 &0 & 0& \dots &1\\
+		0 &0 & 0& \dots &\lambda_i\\
+	\end{bmatrix}
+	\]
+\end{theorem}
+\begin{theorem}
 	For any symmetric matrix M, there always exist eigenvalue value decomposition, such that $M=X\Gamma X^T$, and $XX^T=I_n$, $\Gamma=\text{diag}\{\gamma_1, \gamma_2,\cdots,\gamma_n\}$.
 \end{theorem}
 \begin{proof}
@@ -75,6 +91,38 @@
 \end{proof}
 
 
+\section{Norm}
+\subsection{Vector Norm}
+\begin{definition}
+	In Euclidean space, the L-p norm is defined by 
+	\[
+		||x||_p = (\sum_i^n x_i^p)^{1/p}
+	\]
+\end{definition}
+\begin{definition}
+	Dual Norm:
+\end{definition}
+
+\subsection{Matrix Norm}
+\begin{definition}
+	Nuclear Norm: sum of singular values
+\end{definition}
+\begin{definition}
+	L-p Induced norm:
+\end{definition}
+\begin{definition}
+	Dual Norm:
+\end{definition}
+\begin{definition}
+	Spectral Norm: maximum of singular values.
+\end{definition}
+
+{\bf Discussion:} Relationship between the L0 norm and L1 norm: L1 norm is the smallest convex hull of the L0 norm. This is the key techniques to LASSO and Robust PCA, which use the nuclear norm as a surrogate the rank of a matrix. 
+
+The calculation of nuclear norm? By the following equation, using SVD:
+\[
+tr(\sqrt{AA^T}) = tr(\sqrt{U\Sigma V^T (V\Sigma U^T)} = tr\sqrt{U\Sigma^2U^T} = \sum_i^n |\sigma_i|
+\]
 \section{Lecture notes for Convex Optimization}
 \begin{definition}
 	Vector Space: the space is closed under addition and scale multiplication.

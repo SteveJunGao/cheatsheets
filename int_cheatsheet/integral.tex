@@ -12,6 +12,8 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
  
 % \newcommand{\N}{\mathbb{N}}
 % \newcommand{\Z}{\mathbb{Z}}
@@ -103,6 +105,24 @@ And this will become a linear programming problem.
 The proof can be done by simply using the convex function properties.
 
 \section{Lecture notes for Convex Optimization}
-\subsection{Gradient}
-For $f(x) = x^TPx$, the gradient is $f'(x) = 2Px$
+\subsection{Derivative}
+\begin{theorem}
+	Product rule: Let $f$, $R^n\to R^m$, and $g$, $R^n\to R^m$, be two differentiable functions, then the product of two functions, $h(t) = f(t)^Tg(t)$, $R^n\to R$, is also differentiable and the derivative equals to:
+	\[
+	h'(t) = f'(t)g(t) + g'(t)f(t)
+	\]
+\end{theorem}
+In particular, for $f(x) = x^TPx$, the gradient is $f'(x) = Px + P^Tx$
+
+\begin{theorem}
+	Taylor series: Assume a function $f: R\to R$ is $m$ times continuously differentiable on an interval $\left[a,b\right]$, denote $h=b-1$, then we have
+	\[
+	f(b) = f(a) + \frac{h}{1}f^{(1)}(a) + \frac{h^2}{2!} f^{(2)}(a) + \cdots +\frac{h^m}{m!}f^{(m)}(a) + O(h^{m+1})
+	\]
+\end{theorem}
+\begin{theorem}
+	Mean Value Theorem: Suppose a function $f: R^n\to R^m$ is differentiable over an open set $\Omega\in R^n$, then for any pair of points $(x,y)$ in $\Omega$, there exist a matrix $M$ such that \[
+	f(x) - f(y) = M(x-y).\]
+	And each row corresponds to a derivative of $f$ at a certain point between $x,y$
+\end{theorem}
 \end{document}
