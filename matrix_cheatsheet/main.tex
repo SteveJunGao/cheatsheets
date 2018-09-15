@@ -5,7 +5,7 @@
  
 \documentclass[12pt]{article}
  
-\usepackage[margin=1in]{geometry} 
+\usepackage[margin=0.75in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb, tabularx}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -94,27 +94,33 @@
 \section{Norm}
 \subsection{Vector Norm}
 \begin{definition}
-	In Euclidean space, the L-p norm is defined by 
-	\[
-		||x||_p = (\sum_i^n x_i^p)^{1/p}
-	\]
+	A function $f:R^n\to R$ is called norm if: a) nonnegative: $f(x)\ge 0,\forall x$; b) definite: $f(x)=0, iff. x=0$; c) homogeneous: $f(tx)=|t|f(x)$; d) triangle inequality: $f(x+y)\le f(x) + f(y)$.
 \end{definition}
 \begin{definition}
-	Dual Norm:
+	In Euclidean space, the L-p norm is defined by $||x||_p = (\sum_i^n x_i^p)^{1/p}$
+\end{definition}
+\begin{definition}
+	Dual Norm: Let $||\cdot||$ be the norm on $R^n$ vector space, the associated dual norm $||cdot||_*$ is defined as $||x||_*=\sup\{x^Tv \mid ||v||\le1 \}$.
 \end{definition}
 
 \subsection{Matrix Norm}
 \begin{definition}
+	Operator norm: Suppose $||\cdot||_a,||\cdot||_b$ are norms in $R^n, R^m$, respectively. the operator norm of matrix $X$ is defined by $||X||_{a,b}=\sup\{||Xv||_a \mid ||v||_b<1\}$.
+\end{definition}
+\begin{proposition}
+	 the Operator norm induced by $L_2$ Euclidean Norm is spectral norm
+\end{proposition}
+\begin{proof}
+	L2 Euclidean norm can be expressed as $||Xv||=\sqrt{v^TX^TXv}$. using SVD, we have $X=U\Sigma V^T, ||Xv||=\sqrt{v^TV\Sigma^2V^Tv}=||\Sigma V^Tv||$, therefore, the maximum achieves when $v$ is parallel with singular vector with max singular value.
+\end{proof}
+\begin{definition}
+	Spectral Norm: maximum of singular values.
+\end{definition}
+\begin{definition}
 	Nuclear Norm: sum of singular values
 \end{definition}
 \begin{definition}
-	L-p Induced norm:
-\end{definition}
-\begin{definition}
-	Dual Norm:
-\end{definition}
-\begin{definition}
-	Spectral Norm: maximum of singular values.
+	Forbenius norm: $||X||_F = (\sum_i\sum_j x_{ij}^2)^{1/2}$
 \end{definition}
 
 {\bf Discussion:} Relationship between the L0 norm and L1 norm: L1 norm is the smallest convex hull of the L0 norm. This is the key techniques to LASSO and Robust PCA, which use the nuclear norm as a surrogate the rank of a matrix. 
@@ -123,6 +129,24 @@ The calculation of nuclear norm? By the following equation, using SVD:
 \[
 tr(\sqrt{AA^T}) = tr(\sqrt{U\Sigma V^T (V\Sigma U^T)} = tr\sqrt{U\Sigma^2U^T} = \sum_i^n |\sigma_i|
 \]
+\begin{proposition}
+	The dual norm of spectral norm is nuclear norm.
+\end{proposition}
+\begin{proof}
+	Using the definition of dual norm, we need to prove:
+	\[
+	\sup_{\sigma(A)_1\le 1} tr(A^TX)=\sum_i\sigma(X)_i = tr(X^TX)^{1/2}
+	\]
+	We first prove $\sup_{\sigma(A)_1\le 1} tr(X^TA)\ge tr(X^TX)^{1/2}$. Let the $X=U\Sigma V^T$ by SVD. Then we have $tr((UIV^T)^TX)=tr(VU^TU\Sigma V^T)=tr(V\Sigma V^T)=tr(\Sigma)=\sum_i\sigma(X)_i$. Thus, $\sup_{\sigma(A)_1\le 1} tr(A^TX)\ge \sum_i\sigma(X)_i$. 
+	
+	For the other direction, we have: $\sup_{\sigma(A)_1\le 1} tr(A^TX) = \sup_{\sigma(A)_1\le 1} tr(A^TU\Sigma V^T)= \sup_{\sigma(A)_1\le 1} tr(V^TA^TU\Sigma) $ $= \sup_{\sigma(A)_1\le 1} \sum_{i=1}^n\sigma(X)_iv_i^TA^Tu_i\le \sup_{\sigma(A)_1\le 1}\sigma(X)_i\sigma(A)_1=\sum_{i=1}^n\sigma(X)_i$
+\end{proof}
+\begin{proposition}
+	The nuclear norm is convex.
+\end{proposition}
+\begin{proof}
+	content...
+\end{proof}
 \section{Lecture notes for Convex Optimization}
 \begin{definition}
 	Vector Space: the space is closed under addition and scale multiplication.
