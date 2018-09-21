@@ -4,6 +4,7 @@ This repo will record some theories, equalities, inequalities that I find import
 - Determinant
 - Rank
 - SVD
+- Vector Norm and Matrix Norm 
 
 ## Information Theory
 - Entropy
@@ -13,3 +14,4 @@ This repo will record some theories, equalities, inequalities that I find import
 ## Integral
 - Integral with Gaussian function family
 - Integral in probabilities
+- Derivatives (Product rule, Taylor series expansion, Mean Value Theorem)

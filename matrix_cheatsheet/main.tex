@@ -187,4 +187,42 @@ tr(\sqrt{AA^T}) = tr(\sqrt{U\Sigma V^T (V\Sigma U^T)} = tr\sqrt{U\Sigma^2U^T} = 
 \begin{definition}
 	Forbenius Norm $||X||_F = (\sum_i\sum_i x_{ij}^2)^{1/2}$
 \end{definition}
+\subsection{SVD}
+For any matrix $A\in R^{m\times n}$, we have $A=U\Sigma V^T$, where $UU^T=VV^T=I$, and $\Sigma$ is the diagonal matrix $\Sigma=diag\{\sigma_i\}, \sigma_i\ge 0$
+
+{\bf Discussion:} For matrix-vector multiplication, we could decompose it into rotation-scaling-rotation. $Ax=U\Sigma V^Tx=(U(\Sigma(V^Tx)))$, and we can interpret it from right to left.
+
+\subsection{EVD}
+For any real symmetric matrix, we could get the eigen value decomposition of it. $A=Q\Sigma Q^T$
+
+\begin{definition}
+	Positive Semi-Definite Matrix: $\forall v\in R^n, v^TAv\ge0$
+\end{definition}
+\begin{theorem}
+	$A$ is PSD, iff. $\lambda_i\ge0, \forall i$.
+\end{theorem} 
+\begin{proof}
+	The sufficient part: for any eigenvector $v$, we have $v^TAv=v^T\lambda_i v=\lambda_i\ge0$. For necessary part, for any vector $v$, we have $v^TAv=v^TQ\Sigma Q^Tv=\sum_i \lambda_i(v')_i^2\ge0$
+\end{proof}
+\begin{proposition}
+	For PSD matrix, we have $A^{1/2}=Qdiag\{\sqrt{\lambda_i}\}Q^T$
+\end{proposition}
+\begin{proposition}
+	$f(x) = \log\det(x)$, then the gradient is $x^{-1}$.
+\end{proposition}
+\begin{proof}
+\begin{eqnarray}
+f(x+\Delta x) &=& \log \det (x+\Delta x)=\log\det(x^{1/2}(I+x^{-1/2}\Delta xx^{-1/2})x^{1/2})\\
+&=&\log \det(x) + \log\det(I+x^{-1/2}\Delta xx^{-1/2})=\log \det(x) +\sum_i \log(1+\lambda'_i)\\
+&=&\log \det(x) +\sum_i \lambda'_i = \log \det(x) + Tr(x^{-1/2}\Delta xx^{-1/2}) \\
+&=&\log \det(x) + Tr(x^{-1}\Delta x) 
+\end{eqnarray}
+Thus, the gradient is $x^{-1}$.
+\end{proof}
+{\bf Discussion: }How to calculate the second derivative? 
+\begin{eqnarray}
+	g(x+\Delta x)&=&(x+\Delta x)^{-1} = (x^{1/2}(I+x^{-1/2}\Delta x x^{-1/2})x^{1/2})^{-1}\\
+	&=&x^{-1/2}(I+x^{-1/2}\Delta x x^{-1/2})^{-1}x^{-1/2}=x^{-1/2}(I-x^{-1/2}\Delta x x^{-1/2})x^{-1/2}\\
+	&=&x^{-1} - x^{-1}\Delta x x^{-1}
+\end{eqnarray}
 \end{document}
